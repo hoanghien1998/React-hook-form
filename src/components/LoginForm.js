@@ -13,22 +13,6 @@ const schema = yup.object().shape({
     .max(20, "password up to 20 characters")
 });
 
-let childRender = 0;
-function UserNameWatched({ control }) {
-  useWatch({
-    control,
-    name: "password" // without supply name will watch the entire form, or ['userName', 'password'] to watch both
-  });
-
-  childRender++;
-
-  return (
-    <>
-      <p>child render count: {childRender}</p>
-    </>
-  );
-}
-
 let parentRender = 0;
 
 export default function LoginForm() {
@@ -36,7 +20,8 @@ export default function LoginForm() {
     register,
     handleSubmit,
     control,
-    formState: { errors }
+    formState: { errors },
+    getValues
   } = useForm({ resolver: yupResolver(schema) });
 
   const {
@@ -46,11 +31,6 @@ export default function LoginForm() {
   } = useFieldArray({
     control,
     name: "test"
-  });
-
-  useWatch({
-    name: "username",
-    control
   });
 
   parentRender++;
@@ -76,7 +56,7 @@ export default function LoginForm() {
           {errors.password && <p className="error">{errors.password?.message}</p>}
         </div>
 
-        <ul>
+        {/* <ul>
           {fields.map((item, index) => {
             return (
               <li key={item.id}>
@@ -104,13 +84,18 @@ export default function LoginForm() {
           >
             append
           </button>
-        </section>
+        </section> */}
 
         <div className="field">
           <button type="submit">Submit</button>
         </div>
-        <p>parent render count: {parentRender}</p>
-        <UserNameWatched control={control} />
+
+        <button type="button" onClick={() => {
+          alert(getValues(["username", "password"]))
+        }}>
+          Get values
+        </button>
+        {/* <p>parent render count: {parentRender}</p> */}
       </form>
     </>
   );

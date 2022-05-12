@@ -9,15 +9,9 @@ const FormRedux = ({ handleSubmit }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label>First Name</label>
+        <label>Name</label>
         <div>
-          <Field name="firstName" component="input" type="text" placeholder="First Name"/>
-        </div>
-      </div>
-      <div>
-        <label>Last Name</label>
-        <div>
-          <Field name="lastName" component="input" type="text" placeholder="Last Name"/>
+          <Field name="name" component="input" type="text" placeholder="Name"/>
         </div>
       </div>
       <div>
