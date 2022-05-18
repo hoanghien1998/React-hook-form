@@ -12,7 +12,7 @@ const defaultValues = {
     },
     {
       value: "0",
-      nestedArray: [{ value: "1" }]
+      nestedArray: [{ value: "0" }]
     }
   ]
 };

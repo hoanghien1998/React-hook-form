@@ -24,15 +24,6 @@ export default function LoginForm() {
     getValues
   } = useForm({ resolver: yupResolver(schema) });
 
-  const {
-    fields,
-    append,
-    remove,
-  } = useFieldArray({
-    control,
-    name: "test"
-  });
-
   parentRender++;
   console.log('render react hook form', parentRender);
 
@@ -55,36 +46,6 @@ export default function LoginForm() {
           <input {...register("password")} />
           {errors.password && <p className="error">{errors.password?.message}</p>}
         </div>
-
-        {/* <ul>
-          {fields.map((item, index) => {
-            return (
-              <li key={item.id}>
-                <input {...register(`test.${index}.firstName`)} />
-
-                <Controller
-                  render={({ field }) => <input {...field} />}
-                  name={`test.${index}.lastName`}
-                  control={control}
-                />
-                <button type="button" onClick={() => remove(index)}>
-                  Delete
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-
-        <section>
-          <button
-            type="button"
-            onClick={() => {
-              append({ firstName: "tanTan", lastName: "Kay" });
-            }}
-          >
-            append
-          </button>
-        </section> */}
 
         <div className="field">
           <button type="submit">Submit</button>

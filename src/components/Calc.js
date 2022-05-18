@@ -14,7 +14,7 @@ function totalCal(results) {
       }
     }
   }
-  console.log('totalValue', totalValue);
+  // console.log('totalValue', totalValue);
 
   return totalValue;
 }
@@ -22,7 +22,7 @@ function totalCal(results) {
 export const Calc = ({ control, setValue }) => {
   const results = useWatch({ control, name: "test" });
   const output = totalCal(results);
-  console.log('output', output);
+  // console.log('output', output);
 
   // console.log(results);
 
